@@ -1,10 +1,14 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  turbopack: {},
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+  turbopack: {},  // Important addition to silence the error
+
   webpack: (config) => {
-    config.resolve.alias.canvas = false;
+    if (config.resolve?.alias) {
+      config.resolve.alias['canvas'] = false;
+    }
     return config;
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

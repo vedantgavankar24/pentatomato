@@ -128,7 +128,7 @@ ${text}
       if (err.message?.toLowerCase()?.includes('password')) {
         setNeedsPassword(true);
         setPendingFile(file);
-        setError('This PDF is password protected. Please enter the password below.');
+        setError('This PDF is password protected. Please enter the correct password below.');
       } else {
         setError(err.message || 'Failed to parse PDF');
       }
@@ -362,6 +362,13 @@ ${text}
                 >
                   Unlock
                 </button>
+
+                <style jsx>{`
+                  input::placeholder {
+                    color: white !important;
+                    opacity: 0.7;
+                  }
+                `}</style>
               </div>
             </form>
           )}
